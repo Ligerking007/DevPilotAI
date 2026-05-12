@@ -1,0 +1,12 @@
+{
+  "name": "DevPilotAI",
+  "short_name": "DevPilotAI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F7F8FA",
+  "theme_color": "#2563EB",
+  "description": "AI template and skill generator workspace",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "icons": []
+}

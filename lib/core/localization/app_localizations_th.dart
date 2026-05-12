@@ -1,0 +1,190 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Thai (`th`).
+class AppLocalizationsTh extends AppLocalizations {
+  AppLocalizationsTh([String locale = 'th']) : super(locale);
+
+  @override
+  String get appTitle => 'DevPilotAI';
+
+  @override
+  String get appBrand => 'DevPilot AI by JakapanK';
+
+  @override
+  String get generator => 'สร้างผลลัพธ์';
+
+  @override
+  String get templates => 'เทมเพลต';
+
+  @override
+  String get history => 'ประวัติ';
+
+  @override
+  String get settings => 'ตั้งค่า';
+
+  @override
+  String get language => 'ภาษา';
+
+  @override
+  String get english => 'อังกฤษ';
+
+  @override
+  String get thai => 'ไทย';
+
+  @override
+  String get selectTemplate => 'เลือกเทมเพลต';
+
+  @override
+  String get userCommand => 'คำสั่งผู้ใช้';
+
+  @override
+  String get userCommandHint =>
+      'อธิบาย requirement, code, release หรืองานที่ต้องการ...';
+
+  @override
+  String get generate => 'สร้าง';
+
+  @override
+  String get result => 'ผลลัพธ์';
+
+  @override
+  String get emptyResult => 'ผลลัพธ์ที่สร้างจะแสดงที่นี่';
+
+  @override
+  String get copy => 'คัดลอก';
+
+  @override
+  String get save => 'บันทึก';
+
+  @override
+  String get delete => 'ลบ';
+
+  @override
+  String get edit => 'แก้ไข';
+
+  @override
+  String get createTemplate => 'สร้างเทมเพลต';
+
+  @override
+  String get editTemplate => 'แก้ไขเทมเพลต';
+
+  @override
+  String get searchTemplates => 'ค้นหาเทมเพลต';
+
+  @override
+  String get noTemplateSearchResults => 'ไม่พบเทมเพลตที่ตรงกับคำค้นหา';
+
+  @override
+  String get selectAll => 'เลือกทั้งหมด';
+
+  @override
+  String get clearSelection => 'ยกเลิกการเลือก';
+
+  @override
+  String selectedTemplates(int count) {
+    return 'เลือกแล้ว $count รายการ';
+  }
+
+  @override
+  String get templateName => 'ชื่อเทมเพลต';
+
+  @override
+  String get description => 'คำอธิบาย';
+
+  @override
+  String get category => 'หมวดหมู่';
+
+  @override
+  String get promptInstruction => 'คำสั่ง Prompt';
+
+  @override
+  String get exampleInput => 'ตัวอย่างข้อมูลเข้า';
+
+  @override
+  String get outputFormat => 'รูปแบบผลลัพธ์';
+
+  @override
+  String get languagePreference => 'ภาษาที่ต้องการ';
+
+  @override
+  String get cancel => 'ยกเลิก';
+
+  @override
+  String get saved => 'บันทึกแล้ว';
+
+  @override
+  String get apiSettings => 'ตั้งค่าผู้ให้บริการ AI';
+
+  @override
+  String get provider => 'ผู้ให้บริการ';
+
+  @override
+  String get apiKey => 'API key';
+
+  @override
+  String get baseUrl => 'Base URL';
+
+  @override
+  String get model => 'Model';
+
+  @override
+  String get releaseNotesTitle => 'Release Notes';
+
+  @override
+  String get releaseNotesIntro =>
+      'DevPilotAI ช่วยให้ทีมเปลี่ยน requirement ให้เป็นผลงานจาก AI ที่นำไปใช้ต่อได้จริง';
+
+  @override
+  String get releaseNoteTemplates =>
+      'พื้นที่จัดการเทมเพลตสำหรับสร้าง แก้ไข ค้นหา เลือก และลบ AI skills';
+
+  @override
+  String get releaseNoteGenerator =>
+      'หน้าสร้างผลลัพธ์รวม prompt template ที่เลือกกับข้อความยาวจากผู้ใช้ แล้วแสดงผลลัพธ์อย่างเป็นระเบียบ';
+
+  @override
+  String get releaseNoteHistory =>
+      'ผลลัพธ์ที่สร้างสามารถคัดลอก บันทึก เปิดดูย้อนหลัง และลบจากประวัติในเครื่องได้';
+
+  @override
+  String get releaseNoteLocalization =>
+      'รองรับภาษาไทยและอังกฤษในหน้าจอหลักของระบบ';
+
+  @override
+  String get developerMessageTitle => 'สารจากผู้พัฒนา';
+
+  @override
+  String get developerMessageIntro =>
+      'แอปนี้ถูกสร้างขึ้นเพื่อลดงานวิเคราะห์ซ้ำ ๆ และช่วยให้ทีม Product, QA และ Engineering เริ่มงานจาก draft ที่มีคุณภาพขึ้น';
+
+  @override
+  String get developerMessageFeatures =>
+      'จุดเด่นคือ skill templates ที่ใช้ซ้ำได้, การเชื่อมต่อ OpenAI-compatible API, ประวัติแบบ local-first, หน้าจอ responsive สำหรับ web/mobile และ workflow สองภาษา';
+
+  @override
+  String get developerMessageBenefits =>
+      'ใช้เพื่อช่วยเคลียร์ requirement, สร้าง test cases, วิเคราะห์ความเสี่ยงของ bug, เตรียม release notes และเก็บผลลัพธ์จาก AI เพื่อกลับมาใช้งานภายหลัง';
+
+  @override
+  String get noHistory => 'ยังไม่มีประวัติการสร้างผลลัพธ์';
+
+  @override
+  String get noTemplates => 'ยังไม่มีเทมเพลต';
+
+  @override
+  String get loading => 'กำลังสร้าง...';
+
+  @override
+  String get requiredField => 'จำเป็นต้องกรอก';
+
+  @override
+  String get errorMissingApiKey =>
+      'เพิ่ม API key ในหน้าตั้งค่าหรือส่ง OPENAI_API_KEY';
+
+  @override
+  String get errorGeneric => 'เกิดข้อผิดพลาด กรุณาลองใหม่';
+}

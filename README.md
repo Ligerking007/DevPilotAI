@@ -85,3 +85,8 @@ Authorization: Bearer {apiKey}
 ```
 
 The selected template prompt is used as the system message and the user's command is used as the user message.
+
+<img width="1350" height="702" alt="image" src="https://github.com/user-attachments/assets/b9358d45-c08d-41b9-9370-c7d140a9c34d" />
+<img width="1348" height="694" alt="image" src="https://github.com/user-attachments/assets/03f071b2-9ad4-4fb3-8d71-a9ab53946cca" />
+
+

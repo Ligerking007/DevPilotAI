@@ -3,6 +3,8 @@ import 'package:devpilotai/domain/entities/ai_template.dart';
 class SeedTemplates {
   List<AiTemplate> call() {
     final now = DateTime(2026, 1, 1);
+    // Stable IDs are used by the seed migration logic. Changing an ID creates a
+    // new template for existing users instead of updating the old one.
     return [
       _template(
         id: 'unit-test-generator',

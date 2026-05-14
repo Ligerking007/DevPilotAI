@@ -48,6 +48,8 @@ class PageScaffold extends StatelessWidget {
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(
+              // Data-heavy screens opt out of the default content max width so
+              // tables and split panes can use the full browser width.
               maxWidth: expandContent ? double.infinity : 1280,
             ),
             child: Padding(

@@ -18,6 +18,8 @@ class OpenAiApiService {
     }
 
     final base = settings.baseUrl.replaceFirst(RegExp(r'/$'), '');
+    // Keep this adapter OpenAI-compatible so a proxy or compatible provider can
+    // be swapped in by changing baseUrl/model/settings only.
     final response = await _client.post(
       Uri.parse('$base/chat/completions'),
       headers: {

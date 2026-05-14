@@ -7,6 +7,8 @@ import 'package:devpilotai/domain/usecases/seed_templates.dart';
 class TemplateRepositoryImpl implements TemplateRepository {
   TemplateRepositoryImpl(this._storage, this._seedTemplates);
 
+  // Bump this when adding default templates. Existing users get only missing
+  // seed IDs once, while templates they edited or deleted stay respected.
   static const _seedVersion = 2;
   static const _seedVersionKey = 'templateSeedVersion';
 

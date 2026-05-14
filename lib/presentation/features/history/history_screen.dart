@@ -55,6 +55,9 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
               return Center(child: Text(l10n.noHistory));
             }
 
+            // History stores the template id and display name at generation
+            // time. Categories are resolved from the current template catalog
+            // so category filters stay aligned with active templates.
             final categoryByTemplateId = {
               for (final template in templateItems)
                 template.id: template.category,
@@ -140,6 +143,8 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
   bool _matchesDate(DateTime value) {
     final now = DateTime.now();
     final local = value.toLocal();
+    // Normalize timestamps to local calendar days before comparing ranges,
+    // otherwise time-of-day differences would make "today" inconsistent.
     final today = DateTime(now.year, now.month, now.day);
     final itemDate = DateTime(local.year, local.month, local.day);
     return switch (_dateFilter) {

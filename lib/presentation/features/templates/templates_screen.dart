@@ -60,6 +60,9 @@ class _TemplatesScreenState extends ConsumerState<TemplatesScreen> {
           if (items.isEmpty) {
             return Center(child: Text(l10n.noTemplates));
           }
+          // Keep the data pipeline explicit: search narrows the full catalog,
+          // sort defines display order, then pagination limits what the table
+          // renders for performance.
           final filtered = _filterTemplates(items, _query);
           final sorted = _sortTemplates(filtered, _sortOption);
           final totalPages = _totalPages(sorted.length, _pageSize);
@@ -246,6 +249,8 @@ class _TemplatesScreenState extends ConsumerState<TemplatesScreen> {
   void _togglePageSelection(List<AiTemplate> pageItems) {
     setState(() {
       final pageIds = pageItems.map((template) => template.id).toSet();
+      // The header checkbox works on the visible page only, matching the
+      // pagination scope and avoiding accidental deletion of hidden rows.
       final allSelected =
           pageIds.isNotEmpty && pageIds.every(_selectedTemplateIds.contains);
       if (allSelected) {
@@ -268,6 +273,8 @@ class _TemplatesScreenState extends ConsumerState<TemplatesScreen> {
     required int count,
   }) async {
     final l10n = AppLocalizations.of(context);
+    // Template deletion is destructive and can include multiple selected rows,
+    // so every delete path routes through this confirmation dialog.
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -491,6 +498,8 @@ class _TemplateTableToolbar extends StatelessWidget {
           builder: (context, constraints) {
             final wide = constraints.maxWidth >= 920;
             if (!wide) {
+              // Mobile keeps the same controls as desktop but compresses them
+              // into two short rows so the table remains the primary content.
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [

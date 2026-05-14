@@ -54,6 +54,8 @@ class _GeneratorScreenState extends ConsumerState<GeneratorScreen> {
           _selectedTemplate ??= items.isEmpty ? null : items.first;
           return LayoutBuilder(
             builder: (context, constraints) {
+              // The generator becomes a side-by-side workspace on desktop and
+              // stacks panels on smaller screens without changing the workflow.
               final wide = constraints.maxWidth >= 900;
               final input = _InputPanel(
                 templates: items,
@@ -202,6 +204,8 @@ class _ResultPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final text = error ?? output;
+    // Preview uses the same prompt builder as the API request so users see the
+    // exact structure that will be sent for generation.
     final preview = selectedTemplate == null
         ? ''
         : BuildPrompt()(

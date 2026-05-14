@@ -15,6 +15,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appBrand => 'DevPilot AI by JakapanK';
 
   @override
+  String appVersionLabel(String version, String buildNumber) {
+    return 'Version $version ($buildNumber)';
+  }
+
+  @override
   String get generator => 'Generator';
 
   @override
@@ -200,20 +205,30 @@ class AppLocalizationsEn extends AppLocalizations {
       'DevPilotAI helps teams turn requirements into practical AI-assisted work outputs.';
 
   @override
-  String get releaseNoteTemplates =>
-      'Template workspace for creating, editing, searching, selecting, and deleting AI skills.';
+  String get releaseVersion100Title => 'Version 1.0.0';
 
   @override
-  String get releaseNoteGenerator =>
-      'Generator screen combines a selected prompt template with long user input and returns formatted output.';
+  String get releaseVersion100Date => 'Initial developer workspace release';
 
   @override
-  String get releaseNoteHistory =>
-      'Generated results can be copied, saved, reviewed, and deleted from local history.';
+  String get releaseVersion100Templates =>
+      'Template workspace with search, category grouping, sortable table columns, pagination, row numbers, multi-select, and confirm delete.';
 
   @override
-  String get releaseNoteLocalization =>
-      'Thai and English are supported across the main user interface.';
+  String get releaseVersion100Generator =>
+      'Split generator workspace with template selection, long context input, prompt preview, formatted result output, copy action, and saved history.';
+
+  @override
+  String get releaseVersion100History =>
+      'History screen supports keyword, template, category, and date filtering for generated results.';
+
+  @override
+  String get releaseVersion100Settings =>
+      'Settings include Thai/English switching, OpenAI-compatible provider settings, versioned release notes, and developer message.';
+
+  @override
+  String get releaseVersion100DeveloperPacks =>
+      'Developer-focused templates include API Spec Reviewer, PR Description Generator, Error Log Analyzer, Security Review Checklist, Performance Bottleneck Analyzer, and Backend Unit Test Generator.';
 
   @override
   String get developerMessageTitle => 'Message from the Developer';

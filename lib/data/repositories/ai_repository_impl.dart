@@ -16,6 +16,8 @@ class AiRepositoryImpl implements AiRepository {
     required GenerateRequest request,
     required AiProviderSettings settings,
   }) {
+    // The API layer receives a stable two-message shape: template instruction as
+    // system context, and the composed request as user content.
     return _service.generate(
       systemPrompt: request.template.promptInstruction,
       userInput: _buildPrompt(request),

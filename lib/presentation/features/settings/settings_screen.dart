@@ -1,3 +1,4 @@
+import 'package:devpilotai/core/config/app_config.dart';
 import 'package:devpilotai/core/localization/app_localizations.dart';
 import 'package:devpilotai/domain/entities/ai_provider_settings.dart';
 import 'package:devpilotai/domain/entities/app_language.dart';
@@ -51,6 +52,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       child: ListView(
         children: [
           Card(
+            child: ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: Text(l10n.appBrand),
+              subtitle: Text(
+                l10n.appVersionLabel(
+                  AppConfig.appVersion,
+                  AppConfig.appBuildNumber,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Card(
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -93,6 +107,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 12),
+                  // This screen writes provider settings to local Hive storage.
+                  // Use a backend proxy or secure storage before shipping real
+                  // production keys to end users.
                   _field(_provider, l10n.provider),
                   _field(_apiKey, l10n.apiKey, obscure: true),
                   _field(_baseUrl, l10n.baseUrl),
@@ -127,15 +144,22 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          _InfoSection(
+          _ReleaseNotesSection(
             icon: Icons.new_releases_outlined,
             title: l10n.releaseNotesTitle,
             intro: l10n.releaseNotesIntro,
-            bullets: [
-              l10n.releaseNoteTemplates,
-              l10n.releaseNoteGenerator,
-              l10n.releaseNoteHistory,
-              l10n.releaseNoteLocalization,
+            releases: [
+              _ReleaseNote(
+                version: l10n.releaseVersion100Title,
+                subtitle: l10n.releaseVersion100Date,
+                bullets: [
+                  l10n.releaseVersion100Templates,
+                  l10n.releaseVersion100Generator,
+                  l10n.releaseVersion100History,
+                  l10n.releaseVersion100Settings,
+                  l10n.releaseVersion100DeveloperPacks,
+                ],
+              ),
             ],
           ),
           const SizedBox(height: 16),
@@ -169,6 +193,89 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 }
 
+class _ReleaseNote {
+  const _ReleaseNote({
+    required this.version,
+    required this.subtitle,
+    required this.bullets,
+  });
+
+  final String version;
+  final String subtitle;
+  final List<String> bullets;
+}
+
+class _ReleaseNotesSection extends StatelessWidget {
+  const _ReleaseNotesSection({
+    required this.icon,
+    required this.title,
+    required this.intro,
+    required this.releases,
+  });
+
+  final IconData icon;
+  final String title;
+  final String intro;
+  final List<_ReleaseNote> releases;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _InfoHeader(icon: icon, title: title),
+            const SizedBox(height: 12),
+            Text(intro),
+            const SizedBox(height: 12),
+            ...releases.map((release) => _ReleaseNoteBlock(release: release)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ReleaseNoteBlock extends StatelessWidget {
+  const _ReleaseNoteBlock({required this.release});
+
+  final _ReleaseNote release;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: Border.all(color: const Color(0xFFE5E7EB)),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                release.version,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 2),
+              Text(
+                release.subtitle,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              const SizedBox(height: 10),
+              ...release.bullets.map((text) => _InfoBullet(text: text)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _InfoSection extends StatelessWidget {
   const _InfoSection({
     required this.icon,
@@ -190,32 +297,7 @@ class _InfoSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Icon(
-                    icon,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-              ],
-            ),
+            _InfoHeader(icon: icon, title: title),
             const SizedBox(height: 12),
             Text(intro),
             const SizedBox(height: 12),
@@ -223,6 +305,43 @@ class _InfoSection extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _InfoHeader extends StatelessWidget {
+  const _InfoHeader({
+    required this.icon,
+    required this.title,
+  });
+
+  final IconData icon;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(
+            icon,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ),
+      ],
     );
   }
 }

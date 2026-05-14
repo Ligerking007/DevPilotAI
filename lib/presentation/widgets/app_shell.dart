@@ -56,6 +56,8 @@ class _AppShellState extends State<AppShell> {
           body: Row(
             children: [
               if (wide)
+                // Web/desktop uses a collapsible rail so content-heavy pages can
+                // reclaim horizontal space without losing navigation.
                 NavigationRail(
                   extended: _railExpanded,
                   selectedIndex: _index,

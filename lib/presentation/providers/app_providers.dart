@@ -20,6 +20,8 @@ import 'package:uuid/uuid.dart';
 final localStorageProvider = Provider((ref) => LocalStorage());
 final seedTemplatesProvider = Provider((ref) => SeedTemplates());
 
+// Riverpod is the composition root for clean architecture dependencies:
+// presentation -> repositories -> local/API data sources.
 final templateRepositoryProvider = Provider<TemplateRepository>((ref) {
   return TemplateRepositoryImpl(
     ref.watch(localStorageProvider),
@@ -76,6 +78,8 @@ class SettingsController extends StateNotifier<AiProviderSettings> {
 
   Future<void> save(AiProviderSettings settings) async {
     state = settings;
+    // API keys saved from Settings are persisted as plain Hive data today. For
+    // production, prefer secure storage or a backend proxy instead.
     await _storage.settings.put(
       'aiProvider',
       AiProviderSettingsModel.fromEntity(settings).toJson(),
@@ -121,7 +125,8 @@ final historyProvider =
   (ref) => HistoryController(ref.watch(historyRepositoryProvider))..load(),
 );
 
-class HistoryController extends StateNotifier<AsyncValue<List<GenerateResult>>> {
+class HistoryController
+    extends StateNotifier<AsyncValue<List<GenerateResult>>> {
   HistoryController(this._repository) : super(const AsyncValue.loading());
 
   final HistoryRepository _repository;
@@ -206,6 +211,8 @@ class GeneratorController extends StateNotifier<GeneratorState> {
 
     state = state.copyWith(isLoading: true, clearError: true);
     try {
+      // Generation is immediately saved to history so users can return to the
+      // result even after navigating away from the generator.
       final request = GenerateRequest(template: template, userInput: userInput);
       final output = await _aiRepository.generate(
         request: request,

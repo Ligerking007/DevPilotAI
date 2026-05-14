@@ -7,6 +7,9 @@ class LocalStorage {
 
   static Future<void> init() async {
     await Hive.initFlutter();
+    // These boxes are intentionally opened in one place before the app starts.
+    // Settings currently use plain Hive storage; do not treat values there as
+    // encrypted secrets.
     await Future.wait([
       Hive.openBox<Map>(templatesBox),
       Hive.openBox<Map>(historyBox),

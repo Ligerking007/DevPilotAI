@@ -15,6 +15,11 @@ class AppLocalizationsTh extends AppLocalizations {
   String get appBrand => 'DevPilot AI by JakapanK';
 
   @override
+  String appVersionLabel(String version, String buildNumber) {
+    return 'เวอร์ชัน $version ($buildNumber)';
+  }
+
+  @override
   String get generator => 'สร้างผลลัพธ์';
 
   @override
@@ -188,20 +193,30 @@ class AppLocalizationsTh extends AppLocalizations {
       'DevPilotAI ช่วยให้ทีมเปลี่ยน requirement ให้เป็นผลงานจาก AI ที่นำไปใช้ต่อได้จริง';
 
   @override
-  String get releaseNoteTemplates =>
-      'พื้นที่จัดการเทมเพลตสำหรับสร้าง แก้ไข ค้นหา เลือก และลบ AI skills';
+  String get releaseVersion100Title => 'เวอร์ชัน 1.0.0';
 
   @override
-  String get releaseNoteGenerator =>
-      'หน้าสร้างผลลัพธ์รวม prompt template ที่เลือกกับข้อความยาวจากผู้ใช้ แล้วแสดงผลลัพธ์อย่างเป็นระเบียบ';
+  String get releaseVersion100Date => 'รุ่นแรกของ workspace สำหรับ developer';
 
   @override
-  String get releaseNoteHistory =>
-      'ผลลัพธ์ที่สร้างสามารถคัดลอก บันทึก เปิดดูย้อนหลัง และลบจากประวัติในเครื่องได้';
+  String get releaseVersion100Templates =>
+      'หน้า Templates รองรับค้นหา จัดกลุ่มตามหมวดหมู่ sort จากหัวตาราง paging เลข row multi-select และ confirm ก่อนลบ';
 
   @override
-  String get releaseNoteLocalization =>
-      'รองรับภาษาไทยและอังกฤษในหน้าจอหลักของระบบ';
+  String get releaseVersion100Generator =>
+      'หน้า Generator เป็น split workspace มีการเลือก template, ใส่ context ยาว, preview prompt, แสดงผลแบบ formatted, copy และบันทึก history';
+
+  @override
+  String get releaseVersion100History =>
+      'หน้า History ค้นหาและกรองผลลัพธ์ตาม keyword, template, category และช่วงวันที่ได้';
+
+  @override
+  String get releaseVersion100Settings =>
+      'หน้า Settings รองรับสลับภาษาไทย/อังกฤษ ตั้งค่า OpenAI-compatible provider แสดง release notes ตาม version และสารจากผู้พัฒนา';
+
+  @override
+  String get releaseVersion100DeveloperPacks =>
+      'เพิ่ม Developer Template Packs เช่น API Spec Reviewer, PR Description Generator, Error Log Analyzer, Security Review Checklist, Performance Bottleneck Analyzer และ Backend Unit Test Generator';
 
   @override
   String get developerMessageTitle => 'สารจากผู้พัฒนา';

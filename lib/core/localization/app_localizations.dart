@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// **'DevPilot AI by JakapanK'**
   String get appBrand;
 
+  /// No description provided for @appVersionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version} ({buildNumber})'**
+  String appVersionLabel(String version, String buildNumber);
+
   /// No description provided for @generator.
   ///
   /// In en, this message translates to:
@@ -440,29 +446,47 @@ abstract class AppLocalizations {
   /// **'DevPilotAI helps teams turn requirements into practical AI-assisted work outputs.'**
   String get releaseNotesIntro;
 
-  /// No description provided for @releaseNoteTemplates.
+  /// No description provided for @releaseVersion100Title.
   ///
   /// In en, this message translates to:
-  /// **'Template workspace for creating, editing, searching, selecting, and deleting AI skills.'**
-  String get releaseNoteTemplates;
+  /// **'Version 1.0.0'**
+  String get releaseVersion100Title;
 
-  /// No description provided for @releaseNoteGenerator.
+  /// No description provided for @releaseVersion100Date.
   ///
   /// In en, this message translates to:
-  /// **'Generator screen combines a selected prompt template with long user input and returns formatted output.'**
-  String get releaseNoteGenerator;
+  /// **'Initial developer workspace release'**
+  String get releaseVersion100Date;
 
-  /// No description provided for @releaseNoteHistory.
+  /// No description provided for @releaseVersion100Templates.
   ///
   /// In en, this message translates to:
-  /// **'Generated results can be copied, saved, reviewed, and deleted from local history.'**
-  String get releaseNoteHistory;
+  /// **'Template workspace with search, category grouping, sortable table columns, pagination, row numbers, multi-select, and confirm delete.'**
+  String get releaseVersion100Templates;
 
-  /// No description provided for @releaseNoteLocalization.
+  /// No description provided for @releaseVersion100Generator.
   ///
   /// In en, this message translates to:
-  /// **'Thai and English are supported across the main user interface.'**
-  String get releaseNoteLocalization;
+  /// **'Split generator workspace with template selection, long context input, prompt preview, formatted result output, copy action, and saved history.'**
+  String get releaseVersion100Generator;
+
+  /// No description provided for @releaseVersion100History.
+  ///
+  /// In en, this message translates to:
+  /// **'History screen supports keyword, template, category, and date filtering for generated results.'**
+  String get releaseVersion100History;
+
+  /// No description provided for @releaseVersion100Settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings include Thai/English switching, OpenAI-compatible provider settings, versioned release notes, and developer message.'**
+  String get releaseVersion100Settings;
+
+  /// No description provided for @releaseVersion100DeveloperPacks.
+  ///
+  /// In en, this message translates to:
+  /// **'Developer-focused templates include API Spec Reviewer, PR Description Generator, Error Log Analyzer, Security Review Checklist, Performance Bottleneck Analyzer, and Backend Unit Test Generator.'**
+  String get releaseVersion100DeveloperPacks;
 
   /// No description provided for @developerMessageTitle.
   ///

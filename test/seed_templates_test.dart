@@ -5,7 +5,7 @@ void main() {
   test('seed templates include required defaults', () {
     final templates = SeedTemplates().call();
 
-    expect(templates, hasLength(6));
+    expect(templates, hasLength(12));
     expect(
       templates.map((template) => template.name),
       containsAll([
@@ -15,7 +15,22 @@ void main() {
         'Requirement Clarifier',
         'Release Note Generator',
         'Test Case Generator',
+        'API Spec Reviewer',
+        'Pull Request Description Generator',
+        'Error Log Analyzer',
+        'Security Review Checklist',
+        'Performance Bottleneck Analyzer',
+        'Backend Unit Test Generator',
       ]),
     );
+  });
+
+  test('developer templates are grouped under developer category', () {
+    final developerTemplates = SeedTemplates()
+        .call()
+        .where((template) => template.category == 'Developer')
+        .toList();
+
+    expect(developerTemplates, hasLength(6));
   });
 }

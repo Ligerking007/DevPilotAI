@@ -236,6 +236,90 @@ abstract class AppLocalizations {
   /// **'No templates match your search.'**
   String get noTemplateSearchResults;
 
+  /// No description provided for @sortBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get sortBy;
+
+  /// No description provided for @sortNameAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'Name A-Z'**
+  String get sortNameAsc;
+
+  /// No description provided for @sortNameDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Name Z-A'**
+  String get sortNameDesc;
+
+  /// No description provided for @sortCategoryAsc.
+  ///
+  /// In en, this message translates to:
+  /// **'Category A-Z'**
+  String get sortCategoryAsc;
+
+  /// No description provided for @sortNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest updated'**
+  String get sortNewest;
+
+  /// No description provided for @sortOldest.
+  ///
+  /// In en, this message translates to:
+  /// **'Oldest updated'**
+  String get sortOldest;
+
+  /// No description provided for @pageSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Rows per page'**
+  String get pageSize;
+
+  /// No description provided for @previousPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous page'**
+  String get previousPage;
+
+  /// No description provided for @nextPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Next page'**
+  String get nextPage;
+
+  /// No description provided for @createdAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get createdAt;
+
+  /// No description provided for @updatedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get updatedAt;
+
+  /// No description provided for @confirmDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm delete'**
+  String get confirmDeleteTitle;
+
+  /// No description provided for @confirmDeleteTemplatesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Delete 1 template?} other{Delete {count} templates?}}'**
+  String confirmDeleteTemplatesMessage(int count);
+
+  /// No description provided for @templatePageStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {currentPage} of {totalPages} ({totalItems} templates)'**
+  String templatePageStatus(int currentPage, int totalPages, int totalItems);
+
   /// No description provided for @selectAll.
   ///
   /// In en, this message translates to:
@@ -295,6 +379,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language preference'**
   String get languagePreference;
+
+  /// No description provided for @promptPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Prompt preview'**
+  String get promptPreview;
 
   /// No description provided for @cancel.
   ///
@@ -403,6 +493,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No generated history yet.'**
   String get noHistory;
+
+  /// No description provided for @searchHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Search history'**
+  String get searchHistory;
+
+  /// No description provided for @allTemplates.
+  ///
+  /// In en, this message translates to:
+  /// **'All templates'**
+  String get allTemplates;
+
+  /// No description provided for @allCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All categories'**
+  String get allCategories;
+
+  /// No description provided for @dateRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Date range'**
+  String get dateRange;
+
+  /// No description provided for @allDates.
+  ///
+  /// In en, this message translates to:
+  /// **'All dates'**
+  String get allDates;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// No description provided for @last7Days.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get last7Days;
+
+  /// No description provided for @last30Days.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days'**
+  String get last30Days;
+
+  /// No description provided for @noHistorySearchResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No history matches your filters.'**
+  String get noHistorySearchResults;
 
   /// No description provided for @noTemplates.
   ///

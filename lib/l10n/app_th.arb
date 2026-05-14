@@ -23,6 +23,40 @@
   "editTemplate": "แก้ไขเทมเพลต",
   "searchTemplates": "ค้นหาเทมเพลต",
   "noTemplateSearchResults": "ไม่พบเทมเพลตที่ตรงกับคำค้นหา",
+  "sortBy": "เรียงตาม",
+  "sortNameAsc": "ชื่อ A-Z",
+  "sortNameDesc": "ชื่อ Z-A",
+  "sortCategoryAsc": "หมวดหมู่ A-Z",
+  "sortNewest": "แก้ไขล่าสุด",
+  "sortOldest": "แก้ไขเก่าสุด",
+  "pageSize": "จำนวนต่อหน้า",
+  "previousPage": "หน้าก่อนหน้า",
+  "nextPage": "หน้าถัดไป",
+  "createdAt": "สร้างเมื่อ",
+  "updatedAt": "แก้ไขล่าสุด",
+  "confirmDeleteTitle": "ยืนยันการลบ",
+  "confirmDeleteTemplatesMessage": "ลบเทมเพลต {count} รายการ?",
+  "@confirmDeleteTemplatesMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "templatePageStatus": "หน้า {currentPage} จาก {totalPages} ({totalItems} เทมเพลต)",
+  "@templatePageStatus": {
+    "placeholders": {
+      "currentPage": {
+        "type": "int"
+      },
+      "totalPages": {
+        "type": "int"
+      },
+      "totalItems": {
+        "type": "int"
+      }
+    }
+  },
   "selectAll": "เลือกทั้งหมด",
   "clearSelection": "ยกเลิกการเลือก",
   "selectedTemplates": "เลือกแล้ว {count} รายการ",
@@ -40,6 +74,7 @@
   "exampleInput": "ตัวอย่างข้อมูลเข้า",
   "outputFormat": "รูปแบบผลลัพธ์",
   "languagePreference": "ภาษาที่ต้องการ",
+  "promptPreview": "ตัวอย่าง Prompt",
   "cancel": "ยกเลิก",
   "saved": "บันทึกแล้ว",
   "apiSettings": "ตั้งค่าผู้ให้บริการ AI",
@@ -58,6 +93,15 @@
   "developerMessageFeatures": "จุดเด่นคือ skill templates ที่ใช้ซ้ำได้, การเชื่อมต่อ OpenAI-compatible API, ประวัติแบบ local-first, หน้าจอ responsive สำหรับ web/mobile และ workflow สองภาษา",
   "developerMessageBenefits": "ใช้เพื่อช่วยเคลียร์ requirement, สร้าง test cases, วิเคราะห์ความเสี่ยงของ bug, เตรียม release notes และเก็บผลลัพธ์จาก AI เพื่อกลับมาใช้งานภายหลัง",
   "noHistory": "ยังไม่มีประวัติการสร้างผลลัพธ์",
+  "searchHistory": "ค้นหาประวัติ",
+  "allTemplates": "ทุกเทมเพลต",
+  "allCategories": "ทุกหมวดหมู่",
+  "dateRange": "ช่วงวันที่",
+  "allDates": "ทุกวันที่",
+  "today": "วันนี้",
+  "last7Days": "7 วันที่ผ่านมา",
+  "last30Days": "30 วันที่ผ่านมา",
+  "noHistorySearchResults": "ไม่พบประวัติที่ตรงกับตัวกรอง",
   "noTemplates": "ยังไม่มีเทมเพลต",
   "loading": "กำลังสร้าง...",
   "requiredField": "จำเป็นต้องกรอก",

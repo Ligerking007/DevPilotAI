@@ -14,6 +14,7 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   int _index = 0;
+  bool _railExpanded = true;
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +57,26 @@ class _AppShellState extends State<AppShell> {
             children: [
               if (wide)
                 NavigationRail(
-                  extended: constraints.maxWidth >= 1100,
+                  extended: _railExpanded,
                   selectedIndex: _index,
+                  leading: Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: IconButton(
+                      tooltip: _railExpanded ? 'Collapse' : 'Expand',
+                      onPressed: () => setState(() {
+                        _railExpanded = !_railExpanded;
+                      }),
+                      icon: Icon(
+                        _railExpanded
+                            ? Icons.keyboard_double_arrow_left
+                            : Icons.keyboard_double_arrow_right,
+                      ),
+                    ),
+                  ),
                   onDestinationSelected: (value) => setState(() {
                     _index = value;
                   }),
-                  labelType: constraints.maxWidth >= 1100
+                  labelType: _railExpanded
                       ? NavigationRailLabelType.none
                       : NavigationRailLabelType.all,
                   destinations: destinations

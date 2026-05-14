@@ -1,5 +1,7 @@
 import 'package:devpilotai/core/localization/app_localizations.dart';
 import 'package:devpilotai/domain/entities/ai_template.dart';
+import 'package:devpilotai/domain/entities/generate_request.dart';
+import 'package:devpilotai/domain/usecases/build_prompt.dart';
 import 'package:devpilotai/presentation/providers/app_providers.dart';
 import 'package:devpilotai/presentation/widgets/page_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +23,20 @@ class _GeneratorScreenState extends ConsumerState<GeneratorScreen> {
   AiTemplate? _selectedTemplate;
 
   @override
+  void initState() {
+    super.initState();
+    _inputController.addListener(_refreshPromptPreview);
+  }
+
+  @override
   void dispose() {
+    _inputController.removeListener(_refreshPromptPreview);
     _inputController.dispose();
     super.dispose();
+  }
+
+  void _refreshPromptPreview() {
+    setState(() {});
   }
 
   @override
@@ -33,6 +46,7 @@ class _GeneratorScreenState extends ConsumerState<GeneratorScreen> {
 
     return PageScaffold(
       title: widget.title,
+      expandContent: true,
       child: templates.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => Center(child: Text(error.toString())),
@@ -46,6 +60,7 @@ class _GeneratorScreenState extends ConsumerState<GeneratorScreen> {
                 selectedTemplate: _selectedTemplate,
                 inputController: _inputController,
                 isLoading: generator.isLoading,
+                fillHeight: wide,
                 onTemplateChanged: (template) => setState(() {
                   _selectedTemplate = template;
                 }),
@@ -62,18 +77,25 @@ class _GeneratorScreenState extends ConsumerState<GeneratorScreen> {
                 },
               );
               final result = _ResultPanel(
+                selectedTemplate: _selectedTemplate,
+                userInput: _inputController.text,
                 output: generator.output,
                 error: generator.error,
                 isLoading: generator.isLoading,
+                fillHeight: wide,
               );
 
               if (wide) {
                 return Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Expanded(child: input),
+                    Expanded(
+                      child: input,
+                    ),
                     const SizedBox(width: 16),
-                    Expanded(child: result),
+                    Expanded(
+                      child: result,
+                    ),
                   ],
                 );
               }
@@ -98,6 +120,7 @@ class _InputPanel extends StatelessWidget {
     required this.selectedTemplate,
     required this.inputController,
     required this.isLoading,
+    required this.fillHeight,
     required this.onTemplateChanged,
     required this.onGenerate,
   });
@@ -106,6 +129,7 @@ class _InputPanel extends StatelessWidget {
   final AiTemplate? selectedTemplate;
   final TextEditingController inputController;
   final bool isLoading;
+  final bool fillHeight;
   final ValueChanged<AiTemplate?> onTemplateChanged;
   final VoidCallback onGenerate;
 
@@ -132,16 +156,13 @@ class _InputPanel extends StatelessWidget {
               decoration: InputDecoration(labelText: l10n.selectTemplate),
             ),
             const SizedBox(height: 16),
-            TextField(
-              controller: inputController,
-              minLines: 12,
-              maxLines: 18,
-              decoration: InputDecoration(
-                labelText: l10n.userCommand,
-                hintText: l10n.userCommandHint,
-                alignLabelWithHint: true,
+            if (fillHeight)
+              Expanded(child: _CommandInput(controller: inputController))
+            else
+              SizedBox(
+                height: 360,
+                child: _CommandInput(controller: inputController),
               ),
-            ),
             const SizedBox(height: 16),
             FilledButton.icon(
               onPressed: isLoading ? null : onGenerate,
@@ -162,19 +183,33 @@ class _InputPanel extends StatelessWidget {
 
 class _ResultPanel extends StatelessWidget {
   const _ResultPanel({
+    required this.selectedTemplate,
+    required this.userInput,
     required this.output,
     required this.error,
     required this.isLoading,
+    required this.fillHeight,
   });
 
+  final AiTemplate? selectedTemplate;
+  final String userInput;
   final String output;
   final String? error;
   final bool isLoading;
+  final bool fillHeight;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final text = error ?? output;
+    final preview = selectedTemplate == null
+        ? ''
+        : BuildPrompt()(
+            GenerateRequest(
+              template: selectedTemplate!,
+              userInput: userInput.trim().isEmpty ? '...' : userInput.trim(),
+            ),
+          );
 
     return Card(
       child: Padding(
@@ -182,6 +217,24 @@ class _ResultPanel extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            ExpansionTile(
+              tilePadding: EdgeInsets.zero,
+              initiallyExpanded: true,
+              title: Text(
+                l10n.promptPreview,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: SelectableText(
+                    preview,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(height: 24),
             Row(
               children: [
                 Expanded(
@@ -209,10 +262,39 @@ class _ResultPanel extends StatelessWidget {
                 text,
                 style: TextStyle(color: Theme.of(context).colorScheme.error),
               )
+            else if (fillHeight)
+              Expanded(
+                child: SingleChildScrollView(
+                  child: MarkdownBody(data: text),
+                ),
+              )
             else
               MarkdownBody(data: text),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _CommandInput extends StatelessWidget {
+  const _CommandInput({required this.controller});
+
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return TextField(
+      controller: controller,
+      expands: true,
+      minLines: null,
+      maxLines: null,
+      textAlignVertical: TextAlignVertical.top,
+      decoration: InputDecoration(
+        labelText: l10n.userCommand,
+        hintText: l10n.userCommandHint,
+        alignLabelWithHint: true,
       ),
     );
   }

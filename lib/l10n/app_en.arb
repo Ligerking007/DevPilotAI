@@ -23,6 +23,40 @@
   "editTemplate": "Edit template",
   "searchTemplates": "Search templates",
   "noTemplateSearchResults": "No templates match your search.",
+  "sortBy": "Sort by",
+  "sortNameAsc": "Name A-Z",
+  "sortNameDesc": "Name Z-A",
+  "sortCategoryAsc": "Category A-Z",
+  "sortNewest": "Newest updated",
+  "sortOldest": "Oldest updated",
+  "pageSize": "Rows per page",
+  "previousPage": "Previous page",
+  "nextPage": "Next page",
+  "createdAt": "Created",
+  "updatedAt": "Updated",
+  "confirmDeleteTitle": "Confirm delete",
+  "confirmDeleteTemplatesMessage": "{count, plural, =1{Delete 1 template?} other{Delete {count} templates?}}",
+  "@confirmDeleteTemplatesMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "templatePageStatus": "Page {currentPage} of {totalPages} ({totalItems} templates)",
+  "@templatePageStatus": {
+    "placeholders": {
+      "currentPage": {
+        "type": "int"
+      },
+      "totalPages": {
+        "type": "int"
+      },
+      "totalItems": {
+        "type": "int"
+      }
+    }
+  },
   "selectAll": "Select all",
   "clearSelection": "Clear selection",
   "selectedTemplates": "{count, plural, =1{1 template selected} other{{count} templates selected}}",
@@ -40,6 +74,7 @@
   "exampleInput": "Example input",
   "outputFormat": "Output format",
   "languagePreference": "Language preference",
+  "promptPreview": "Prompt preview",
   "cancel": "Cancel",
   "saved": "Saved",
   "apiSettings": "AI provider settings",
@@ -58,6 +93,15 @@
   "developerMessageFeatures": "Key strengths are reusable skill templates, OpenAI-compatible integration, local-first history, responsive web/mobile layout, and multilingual workflow support.",
   "developerMessageBenefits": "Use it to clarify requirements, generate test cases, analyze bug risks, prepare release notes, and keep useful AI outputs organized for later review.",
   "noHistory": "No generated history yet.",
+  "searchHistory": "Search history",
+  "allTemplates": "All templates",
+  "allCategories": "All categories",
+  "dateRange": "Date range",
+  "allDates": "All dates",
+  "today": "Today",
+  "last7Days": "Last 7 days",
+  "last30Days": "Last 30 days",
+  "noHistorySearchResults": "No history matches your filters.",
   "noTemplates": "No templates yet.",
   "loading": "Generating...",
   "requiredField": "Required field",

@@ -79,6 +79,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noTemplateSearchResults => 'No templates match your search.';
 
   @override
+  String get sortBy => 'Sort by';
+
+  @override
+  String get sortNameAsc => 'Name A-Z';
+
+  @override
+  String get sortNameDesc => 'Name Z-A';
+
+  @override
+  String get sortCategoryAsc => 'Category A-Z';
+
+  @override
+  String get sortNewest => 'Newest updated';
+
+  @override
+  String get sortOldest => 'Oldest updated';
+
+  @override
+  String get pageSize => 'Rows per page';
+
+  @override
+  String get previousPage => 'Previous page';
+
+  @override
+  String get nextPage => 'Next page';
+
+  @override
+  String get createdAt => 'Created';
+
+  @override
+  String get updatedAt => 'Updated';
+
+  @override
+  String get confirmDeleteTitle => 'Confirm delete';
+
+  @override
+  String confirmDeleteTemplatesMessage(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Delete $count templates?',
+      one: 'Delete 1 template?',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String templatePageStatus(int currentPage, int totalPages, int totalItems) {
+    return 'Page $currentPage of $totalPages ($totalItems templates)';
+  }
+
+  @override
   String get selectAll => 'Select all';
 
   @override
@@ -115,6 +167,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get languagePreference => 'Language preference';
+
+  @override
+  String get promptPreview => 'Prompt preview';
 
   @override
   String get cancel => 'Cancel';
@@ -177,6 +232,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noHistory => 'No generated history yet.';
+
+  @override
+  String get searchHistory => 'Search history';
+
+  @override
+  String get allTemplates => 'All templates';
+
+  @override
+  String get allCategories => 'All categories';
+
+  @override
+  String get dateRange => 'Date range';
+
+  @override
+  String get allDates => 'All dates';
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get last7Days => 'Last 7 days';
+
+  @override
+  String get last30Days => 'Last 30 days';
+
+  @override
+  String get noHistorySearchResults => 'No history matches your filters.';
 
   @override
   String get noTemplates => 'No templates yet.';

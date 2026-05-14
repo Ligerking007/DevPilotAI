@@ -6,12 +6,14 @@ class PageScaffold extends StatelessWidget {
     required this.title,
     required this.child,
     this.actions,
+    this.expandContent = false,
     super.key,
   });
 
   final String title;
   final Widget child;
   final List<Widget>? actions;
+  final bool expandContent;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,9 @@ class PageScaffold extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1280),
+            constraints: BoxConstraints(
+              maxWidth: expandContent ? double.infinity : 1280,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: child,

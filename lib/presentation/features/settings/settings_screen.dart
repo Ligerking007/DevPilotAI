@@ -47,6 +47,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
     return PageScaffold(
       title: widget.title,
+      expandContent: true,
       child: ListView(
         children: [
           Card(
@@ -55,7 +56,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(l10n.language, style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    l10n.language,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 12),
                   SegmentedButton<AppLanguage>(
                     segments: [
@@ -98,7 +102,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     alignment: Alignment.centerRight,
                     child: FilledButton.icon(
                       onPressed: () async {
-                        await ref.read(settingsControllerProvider.notifier).save(
+                        await ref
+                            .read(settingsControllerProvider.notifier)
+                            .save(
                               AiProviderSettings(
                                 provider: _provider.text.trim(),
                                 apiKey: _apiKey.text.trim(),

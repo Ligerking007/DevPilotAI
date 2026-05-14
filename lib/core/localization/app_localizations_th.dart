@@ -79,6 +79,52 @@ class AppLocalizationsTh extends AppLocalizations {
   String get noTemplateSearchResults => 'ไม่พบเทมเพลตที่ตรงกับคำค้นหา';
 
   @override
+  String get sortBy => 'เรียงตาม';
+
+  @override
+  String get sortNameAsc => 'ชื่อ A-Z';
+
+  @override
+  String get sortNameDesc => 'ชื่อ Z-A';
+
+  @override
+  String get sortCategoryAsc => 'หมวดหมู่ A-Z';
+
+  @override
+  String get sortNewest => 'แก้ไขล่าสุด';
+
+  @override
+  String get sortOldest => 'แก้ไขเก่าสุด';
+
+  @override
+  String get pageSize => 'จำนวนต่อหน้า';
+
+  @override
+  String get previousPage => 'หน้าก่อนหน้า';
+
+  @override
+  String get nextPage => 'หน้าถัดไป';
+
+  @override
+  String get createdAt => 'สร้างเมื่อ';
+
+  @override
+  String get updatedAt => 'แก้ไขล่าสุด';
+
+  @override
+  String get confirmDeleteTitle => 'ยืนยันการลบ';
+
+  @override
+  String confirmDeleteTemplatesMessage(int count) {
+    return 'ลบเทมเพลต $count รายการ?';
+  }
+
+  @override
+  String templatePageStatus(int currentPage, int totalPages, int totalItems) {
+    return 'หน้า $currentPage จาก $totalPages ($totalItems เทมเพลต)';
+  }
+
+  @override
   String get selectAll => 'เลือกทั้งหมด';
 
   @override
@@ -109,6 +155,9 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get languagePreference => 'ภาษาที่ต้องการ';
+
+  @override
+  String get promptPreview => 'ตัวอย่าง Prompt';
 
   @override
   String get cancel => 'ยกเลิก';
@@ -171,6 +220,33 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get noHistory => 'ยังไม่มีประวัติการสร้างผลลัพธ์';
+
+  @override
+  String get searchHistory => 'ค้นหาประวัติ';
+
+  @override
+  String get allTemplates => 'ทุกเทมเพลต';
+
+  @override
+  String get allCategories => 'ทุกหมวดหมู่';
+
+  @override
+  String get dateRange => 'ช่วงวันที่';
+
+  @override
+  String get allDates => 'ทุกวันที่';
+
+  @override
+  String get today => 'วันนี้';
+
+  @override
+  String get last7Days => '7 วันที่ผ่านมา';
+
+  @override
+  String get last30Days => '30 วันที่ผ่านมา';
+
+  @override
+  String get noHistorySearchResults => 'ไม่พบประวัติที่ตรงกับตัวกรอง';
 
   @override
   String get noTemplates => 'ยังไม่มีเทมเพลต';

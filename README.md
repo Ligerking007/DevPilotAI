@@ -88,5 +88,7 @@ The selected template prompt is used as the system message and the user's comman
 
 <img width="1350" height="702" alt="image" src="https://github.com/user-attachments/assets/b9358d45-c08d-41b9-9370-c7d140a9c34d" />
 <img width="1348" height="694" alt="image" src="https://github.com/user-attachments/assets/03f071b2-9ad4-4fb3-8d71-a9ab53946cca" />
+<img width="361" height="716" alt="image" src="https://github.com/user-attachments/assets/85c51268-9dfb-4b85-9347-01054bd8d899" />
+
 
 
